@@ -1,5 +1,4 @@
 import {useSelector, useDispatch} from "react-redux"
-import { json } from "stream/consumers";
 import useChara from "../../../hooks/useChara";
 import { updateChara } from "../../../redux/actions/chara.action";
 
