@@ -45,7 +45,11 @@
     }
 
     &:hover {
-        background: rgba(14, 170, 163, 0.4);
+        background: $blue3;
         cursor: pointer;
+    }
+
+    &.active {
+        background: $orange1;
     }
 }
