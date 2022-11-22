@@ -13,3 +13,5 @@ export const itemsRight = [
     {name: "belt", url: "./img/items/bg_equipment_belt.jpg"},
     {name: "pet", url: "./img/items/bg_equipment_pet.jpg"}
 ]
+
+

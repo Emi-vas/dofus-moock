@@ -8,9 +8,38 @@ body {
 }
 
 $gray : rgb(187, 187, 187);
-$blue1 : rgb(45 165 158);
+$blue1 : rgb(16, 134, 128);
+$blue2 : rgb(11, 121, 189);
 
 .flex-center {
   display: flex;
   justify-content: center;
+}
+
+.btn-1 {
+  color: white;
+  background: $blue1;
+  padding: 7px 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  &:hover {
+    background: rgb(11, 121, 189);
+  }
+}
+
+button {
+    font-size: inherit;
+    font-family: inherit;
+    border: none;
+}
+
+.back {
+    font-size: 1.3em;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.main {
+   max-width: 900px;
+   margin: auto;
 }

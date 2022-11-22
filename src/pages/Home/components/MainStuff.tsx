@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { itemsLeft, itemsRight } from "../data/icons";
 import useIcons from "../hooks/useIcons";
 
+interface Props {
+    setDisplaySettingsChara: (val:boolean) => void
+}
 
-const EquipmentsMain = () => {
+const EquipmentsMain = ({ setDisplaySettingsChara }: Props) => {
 
     return (
         <div className="home-stuff_container">
@@ -11,6 +14,9 @@ const EquipmentsMain = () => {
                 <ColumnItems items={itemsLeft} />
                 <div className="chara">
                     <img src="https://s.ankama.com/www/static.ankama.com/dofus/renderer/look/7b317c38302c323132347c313d31363736353536342c323d31363335353838332c333d31363737373138352c343d323931303036342c353d31343536313739397c3134307d/full/1/250_250-10_100.png" referrerPolicy="no-referrer" alt="" />
+                    <button onClick={() => setDisplaySettingsChara(true)} className="btn-1">
+                        Editer personnage
+                    </button>
                 </div>
                 <ColumnItems items={itemsRight} />
             </div>
@@ -50,8 +56,8 @@ const BottomItems = () => {
         <div className="home-stuff_bottomLine">
             {
                 bottomIcons[0] && bottomIcons.map((icon: any) => (
-                    <div className="item">
-                        <img src={icon.url} alt="" />
+                    <div className="item" key={icon.name}>
+                        <img src={icon.url} alt={icon.name}  />
                     </div>
                 ))
             }
