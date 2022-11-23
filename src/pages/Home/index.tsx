@@ -6,6 +6,7 @@ import SettingChara from "./components/SettingChara";
 import { useDispatch} from "react-redux"
 import { updateChara } from '../../redux/actions/chara.action';
 import useChara from '../../hooks/useChara';
+import { IMAGE_MALE_DEFAULT, IMAGE_FEMALE_DEFAULT } from '../../data/constants';
 
 
 const Home = () => {
@@ -21,6 +22,10 @@ const Home = () => {
         }
     }, [])
 
+
+    useEffect(() => {
+        console.log(chara)
+    }, [chara])
 
     return (
         <div>
@@ -41,7 +46,10 @@ const Home = () => {
 
 export default Home;
 
+//default cara
 const newChara = {
     classe : "Iop",
-    img: "https://s.ankama.com/www/static.ankama.com/dofus/renderer/look/7b317c38302c323132347c313d31363736353536342c323d31363335353838332c333d31363737373138352c343d323931303036342c353d31343536313739397c3134307d/full/1/250_250-10_100.png"
+    imgMale: IMAGE_MALE_DEFAULT,
+    imgFemale: IMAGE_FEMALE_DEFAULT,
+    gender: "male"
 }

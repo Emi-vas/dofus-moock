@@ -1,6 +1,8 @@
-import {useSelector, useDispatch} from "react-redux"
+import { useDispatch } from "react-redux"
 import useChara from "../../../hooks/useChara";
 import { updateChara } from "../../../redux/actions/chara.action";
+import { ICONS } from "../../../data/constants"
+import { useState, useEffect } from "react";
 
 
 interface Props {
@@ -10,17 +12,27 @@ interface Props {
 const ClassesList = ({ classes }: Props) => {
     const dispatch = useDispatch()
     const chara = useChara()
+    const [gender, setGender] = useState('male')
+    const [isClasseChange, setIsClasseChange] = useState(false) //handle change gender on actual classe
+
+    useEffect(() => {
+        setGender(chara.gender)
+    }, [])
 
     const setClasse = (classe: any) => {
+        setIsClasseChange(true)
         const chara = {
             classe: classe.name,
-            img: classe.maleImg
+            imgMale:  classe.maleImg,
+            imgFemale: classe.femaleImg,
+            gender: gender
         }
         dispatch(updateChara(JSON.stringify(chara)))
     }
 
     return (
         <div className="home-settingChara_container">
+            <Gender gender={gender} setGender={setGender} isClasseChange={isClasseChange} />
             {
                 classes[0] && classes.map(classe => (
                     <div 
@@ -28,7 +40,7 @@ const ClassesList = ({ classes }: Props) => {
                         key={classe.name} 
                         className={classe.name == chara.classe ? "home-settingChara active" : "home-settingChara"  }
                     >
-                        <img src={classe.maleImg} alt={classe.name} />
+                        <img src={gender == "male" ? classe.maleImg : classe.femaleImg} alt={classe.name} />
                     </div>
                 ))
             }
@@ -37,3 +49,51 @@ const ClassesList = ({ classes }: Props) => {
 };
 
 export default ClassesList;
+
+
+interface PropsGender {
+    gender: string,
+    setGender: (value: string) => void,
+    isClasseChange: boolean
+}
+
+const Gender = ({ gender, setGender, isClasseChange }: PropsGender) => {
+    let chara = useChara()
+    const dispatch = useDispatch()
+
+    const setClass = (genderIcon: string) => {
+        let isActive = ""
+
+        if(genderIcon == gender) {
+            isActive = ' active'
+        }
+        if(genderIcon == 'male') {
+            return ICONS.male+ isActive
+        }
+        if(genderIcon == 'female') {
+            return ICONS.female+ isActive
+        }
+    }
+
+    const handleClick = (gender: string) => {
+        setGender(gender)
+        if(!isClasseChange) {
+            //update gender
+            chara.gender = gender
+            dispatch(updateChara(JSON.stringify(chara)))
+        }
+    }
+
+    return (
+        <div className="gender">
+            <i 
+                className={setClass("male")}
+                onClick={() => handleClick("male")}
+            ></i>
+            <i 
+                className={setClass('female')}
+                onClick={() => handleClick("female")}
+            ></i>
+        </div>
+    )
+}

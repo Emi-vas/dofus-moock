@@ -1,7 +1,6 @@
 import {useSelector} from "react-redux"
 
 const useChara = () => {
-   
     const chara: any = useSelector<any>(state => state.chara)
 
     if(chara == "") {

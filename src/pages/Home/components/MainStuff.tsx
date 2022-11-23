@@ -15,9 +15,12 @@ const EquipmentsMain = ({ setDisplaySettingsChara }: Props) => {
             <div className="home-stuff">
                 <ColumnItems items={itemsLeft} />
                 <div className="chara">
-                    <img src={chara.img} referrerPolicy="no-referrer" alt="" />
+                    <img 
+                        src={chara.gender == "male" ? chara.imgMale : chara.imgFemale} 
+                        referrerPolicy="no-referrer" alt="" 
+                    />
                     <button onClick={() => setDisplaySettingsChara(true)} className="btn-1">
-                        Editer personnage
+                        changer de classe
                     </button>
                 </div>
                 <ColumnItems items={itemsRight} />
