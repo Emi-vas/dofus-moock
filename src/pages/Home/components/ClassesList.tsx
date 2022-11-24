@@ -6,10 +6,11 @@ import { useState, useEffect } from "react";
 
 
 interface Props {
-    classes : any[]
+    classes : any[],
+    setDisplaySettingsChara: (value: boolean) => void
 }
 
-const ClassesList = ({ classes }: Props) => {
+const ClassesList = ({ classes, setDisplaySettingsChara }: Props) => {
     const dispatch = useDispatch()
     const chara = useChara()
     const [gender, setGender] = useState('male')
@@ -28,6 +29,7 @@ const ClassesList = ({ classes }: Props) => {
             gender: gender
         }
         dispatch(updateChara(JSON.stringify(chara)))
+        setDisplaySettingsChara(false)
     }
 
     return (

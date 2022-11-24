@@ -6,14 +6,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  
 }
 
 $gray : rgb(187, 187, 187);
+$gray2 : rgb(128, 128, 128);
 $black: rgb(65, 65, 65);
 $blue1 : rgb(16, 134, 128);
 $blue2 : rgb(11, 121, 189);
 $blue3 : rgba(14, 170, 163, 0.4);
 $orange1 : rgb(237, 156, 74);
+$orange2 : rgb(211, 110, 10);
+$orange-bg: rgb(251, 233, 198);
 
 .flex-center {
   display: flex;
@@ -23,6 +28,7 @@ $orange1 : rgb(237, 156, 74);
 .btn-1 {
   color: white;
   background: $blue1;
+  //background: $orange2;
   padding: 7px 15px;
   border-radius: 15px;
   cursor: pointer;
@@ -46,4 +52,29 @@ button {
 .main {
    max-width: 900px;
    margin: auto;
+}
+
+.yellow {
+  color: rgb(230, 195, 18);
+}
+.black {
+  color: rgb(53, 53, 53);
+}
+.green {
+  color: rgb(26, 137, 32);
+}
+.red {
+  color: rgb(190, 43, 43);
+}
+.purple {
+  color: rgb(116, 43, 190);
+}
+.blue {
+  color: rgb(12, 144, 226);
+}
+.brown {
+  color: rgb(114, 62, 6);
+}
+.orange {
+  color: $orange2;
 }
