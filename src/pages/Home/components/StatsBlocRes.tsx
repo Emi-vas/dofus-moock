@@ -49,12 +49,12 @@ const StatsBlocRes = () => {
                 <div className='stats_line'>
                     <p>Res Distance</p>
                     <i className={ICONS.dist + " purple"}></i>
-                    <p>50</p>
+                    <p>10%</p>
                 </div>
                 <div className='stats_line'>
                     <p>Res Mélée</p>
                     <i className={ICONS.mele + " purple"}></i>
-                    <p>50</p>
+                    <p>10%</p>
                 </div>
                 <div className='stats_line'>
                     <p>Res crit</p>

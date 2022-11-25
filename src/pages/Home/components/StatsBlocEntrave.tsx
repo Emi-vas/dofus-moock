@@ -12,24 +12,24 @@ const StatsBlocEntrave = () => {
                 <div className='stats_line'>
                     <p>Retrait PA</p>
                     <i className={ICONS.star + " yellow"}></i>
-                    <p>6</p>
+                    <p>150</p>
                 </div>
                 <div className='stats_line'>
                     <p>Esquive PA</p>
                     <i className={ICONS.star + " yellow"}></i>
-                    <p>6</p>
+                    <p>200</p>
                 </div>
                 <div className='separation'></div>
 
                 <div className='stats_line'>
                     <p>Retrait PM</p>
                     <i className={ICONS.pm + " green"}></i>
-                    <p>3</p>
+                    <p>300</p>
                 </div>
                 <div className='stats_line'>
                     <p>Esquive PM</p>
                     <i className={ICONS.pm + " green"}></i>
-                    <p>3</p>
+                    <p>120</p>
                 </div>
             
                 <div className='separation'></div>

@@ -15,6 +15,7 @@ const EquipmentsMain = ({ setDisplaySettingsChara }: Props) => {
             <div className="home-stuff">
                 <ColumnItems items={itemsLeft} />
                 <div className="chara">
+                    <ClasseLevel />
                     <img 
                         src={chara.gender == "male" ? chara.imgMale : chara.imgFemale} 
                         referrerPolicy="no-referrer" alt="" 
@@ -31,6 +32,17 @@ const EquipmentsMain = ({ setDisplaySettingsChara }: Props) => {
 };
 
 export default EquipmentsMain;
+
+const ClasseLevel = () => {
+    const chara = useChara()
+
+    return(
+        <div>
+            <p className="classe">{chara.classe}</p>
+            <p>niveau : {chara.level}</p>
+        </div>
+    )
+}
 
 
 interface Items {

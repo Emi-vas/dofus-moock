@@ -22,13 +22,14 @@ const ClassesList = ({ classes, setDisplaySettingsChara }: Props) => {
 
     const setClasse = (classe: any) => {
         setIsClasseChange(true)
-        const chara = {
+        const charaNew = {
+            ...chara,
             classe: classe.name,
             imgMale:  classe.maleImg,
             imgFemale: classe.femaleImg,
-            gender: gender
+            gender: gender,
         }
-        dispatch(updateChara(JSON.stringify(chara)))
+        dispatch(updateChara(JSON.stringify(charaNew)))
         setDisplaySettingsChara(false)
     }
 

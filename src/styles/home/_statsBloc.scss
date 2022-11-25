@@ -49,6 +49,12 @@
         justify-content: center;
         width: 100%;
         margin: 5px 0;
+        transition: transform 0.1s;
+
+        &:hover {
+            background: $orange-bg;
+            transform: scale(1.07);
+        }
 
         i {
             margin: 5px;
@@ -81,6 +87,13 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
+        transition: transform 0.3s;
+
+        &:hover {
+            background: $orange-bg;
+            transform: scale(1.07);
+        }
+        
 
         & .stat {
             color: $gray2;

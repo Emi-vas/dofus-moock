@@ -24,12 +24,12 @@ const StatsBlocElem = ({ elem }: Props) => {
                 <div className='stats_line'>
                     <p>Do Distance</p>
                     <i className={ICONS.dist + " purple"}></i>
-                    <p>150</p>
+                    <p>15%</p>
                 </div>
                 <div className='stats_line'>
                     <p>Do Mélée</p>
                     <i className={ICONS.mele + " purple"}></i>
-                    <p>150</p>
+                    <p>15%</p>
                 </div>
                 <div className='stats_line'>
                     <p>Do Crit</p>

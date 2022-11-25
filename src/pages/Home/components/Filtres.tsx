@@ -24,7 +24,7 @@ const Filtres = ({ filters, setFilters }: Props) => {
                     <div className=' elem blue1'>
                         <label htmlFor="main">
                             <i className={ICONS.clipboard}></i>
-                            <p>Principales</p>
+                            <p>Générales</p>
                         </label>
                         <input type="checkbox" id='main' 
                             checked={filters.main} 

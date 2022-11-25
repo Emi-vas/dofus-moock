@@ -53,6 +53,7 @@ export default Home;
 //default cara
 const newChara = {
     classe : "Iop",
+    level: 1,
     imgMale: IMAGE_MALE_DEFAULT,
     imgFemale: IMAGE_FEMALE_DEFAULT,
     gender: "male",

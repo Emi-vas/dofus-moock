@@ -5,7 +5,6 @@ import StatsBlocElem from './StatsBlocElem';
 import StatsBlocEntrave from './StatsBlocEntrave';
 import StatsBlocMain from './StatsBlocMain';
 import StatsBlocRes from './StatsBlocRes';
-import StatsBlocResDiv from './StatsBlocResDiv';
 
 const StatsBlocs = () => {
     const [filters, setFilters] = useState(filterDefault)
