@@ -4,10 +4,11 @@ import { itemsLeft, itemsRight } from "../data/icons";
 import useIcons from "../hooks/useIcons";
 
 interface Props {
-    setDisplaySettingsChara: (val:boolean) => void
+    setDisplaySettingsChara: (val:boolean) => void,
+    setDisplaySettingsStats: (val:boolean) => void,
 }
 
-const EquipmentsMain = ({ setDisplaySettingsChara }: Props) => {
+const EquipmentsMain = ({ setDisplaySettingsChara, setDisplaySettingsStats }: Props) => {
     const chara = useChara()
    
     return (
@@ -15,14 +16,22 @@ const EquipmentsMain = ({ setDisplaySettingsChara }: Props) => {
             <div className="home-stuff">
                 <ColumnItems items={itemsLeft} />
                 <div className="chara">
-                    <ClasseLevel />
+                    <div>
+                        <p className="classe">{chara.classe}</p>
+                        <p>niveau : {chara.level}</p>
+                    </div>
                     <img 
                         src={chara.gender == "male" ? chara.imgMale : chara.imgFemale} 
                         referrerPolicy="no-referrer" alt="" 
                     />
-                    <button onClick={() => setDisplaySettingsChara(true)} className="btn-1">
-                        changer de classe
-                    </button>
+                    <div className="bloc-btn">
+                        <button onClick={() => setDisplaySettingsChara(true)} className="btn-1">
+                            changer de classe
+                        </button>
+                        <button onClick={() => setDisplaySettingsStats(true)} className="btn-2">
+                            caractéristiques
+                        </button>
+                    </div>
                 </div>
                 <ColumnItems items={itemsRight} />
             </div>
@@ -32,17 +41,6 @@ const EquipmentsMain = ({ setDisplaySettingsChara }: Props) => {
 };
 
 export default EquipmentsMain;
-
-const ClasseLevel = () => {
-    const chara = useChara()
-
-    return(
-        <div>
-            <p className="classe">{chara.classe}</p>
-            <p>niveau : {chara.level}</p>
-        </div>
-    )
-}
 
 
 interface Items {

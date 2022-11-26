@@ -9,12 +9,14 @@ import useChara from '../../hooks/useChara';
 import { IMAGE_MALE_DEFAULT, IMAGE_FEMALE_DEFAULT } from '../../data/constants';
 import StatsBlocMain from './components/StatsBlocMain';
 import StatsBlocs from './components/StatsBlocs';
+import SettingStats from './components/SettingStats';
 
 
 
 const Home = () => {
     const dispatch = useDispatch()
     const [displaySettingsChara, setDisplaySettingsChara] = useState(false)
+    const [displaySettingsStats, setDisplaySettingsStats] = useState(false)
     const classesList = useFetchapi("/classes")
     const chara = useChara() //get redux charactere info
 
@@ -34,6 +36,7 @@ const Home = () => {
         <div>
             <MainStuff 
                 setDisplaySettingsChara={setDisplaySettingsChara} 
+                setDisplaySettingsStats={setDisplaySettingsStats}
             />
             
             { displaySettingsChara && 
@@ -41,6 +44,10 @@ const Home = () => {
                     classesList={classesList}
                     setDisplaySettingsChara={setDisplaySettingsChara} 
                 /> 
+            }
+
+            { displaySettingsStats && 
+                <SettingStats setDisplaySettingsStats={setDisplaySettingsStats} />    
             }
 
             <StatsBlocs />

@@ -1,0 +1,30 @@
+.home-settingStats {
+
+    & .elementaireCont {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+    }
+
+    & .elementaireBloc {
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+        padding-top: 10px;
+        border-radius: 30px;
+        margin: 10px;
+
+        i {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        label {
+            margin-top: 10px;
+            font-size: 1.03em;
+        }
+    }
+}

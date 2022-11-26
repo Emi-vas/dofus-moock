@@ -33,7 +33,18 @@ $orange-bg: rgb(251, 233, 198);
   border-radius: 15px;
   cursor: pointer;
   &:hover {
-    background: rgb(11, 121, 189);
+    background: rgb(21, 175, 167);
+  }
+}
+.btn-2 {
+  color: white;
+  background: $orange2;
+  //background: $orange2;
+  padding: 7px 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  &:hover {
+    background: $orange1;
   }
 }
 
@@ -41,6 +52,15 @@ button {
     font-size: inherit;
     font-family: inherit;
     border: none;
+}
+
+input {
+  font-size: inherit;
+  font-family: inherit;
+  outline: none;
+  padding: 10px 7px;
+  border: $gray 1px solid;
+  border-radius: 10px;
 }
 
 .back {
