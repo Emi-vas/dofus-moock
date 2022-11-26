@@ -50,7 +50,9 @@ const Home = () => {
                 <SettingStats setDisplaySettingsStats={setDisplaySettingsStats} />    
             }
 
-            <StatsBlocs />
+            {
+                chara && <StatsBlocs />
+            }
         </div>
     );
 };
@@ -66,19 +68,22 @@ const newChara = {
     gender: "male",
 
     stats: {
-        vita: 250,
-        pa: 6,
-        pm: 3,
-        po: 0,
-        invo: 1,
-        ini: 1000,
-        //elem
-        agi: 0,
-        intel: 0,
-        force: 0,
-        eau: 0,
+        base : {
+            vita: 0,
+            pa: 6,
+            pm: 3,
+            po: 0,
+            invo: 1,
+            ini: 1000,
+             //elem
+            agi: 0,
+            intel: 0,
+            force: 0,
+            eau: 0,
+            sagesse: 0,
+        },
+       
         puissance: 0,
-        sagesse: 0,
         //crit
         crit: 0,
         doCrit: 0,

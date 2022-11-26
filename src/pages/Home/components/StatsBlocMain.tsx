@@ -1,6 +1,19 @@
+import { useState, useEffect } from 'react'
 import { ICONS } from '../../../data/constants';
+import useChara from '../../../hooks/useChara';
 
 const StatsBlocMain = () => {
+    const chara = useChara()
+    const [vita, setVita] = useState(55)
+
+    useEffect(() => {
+        setVita(
+            55 +
+            ((chara.level - 1) * 5) +
+            (chara.stats.base.vita)
+        )
+    }, [chara])
+
     return (
         <div className='statsBloc'>
             <div className='head'>
@@ -10,7 +23,7 @@ const StatsBlocMain = () => {
                 <div className='stats_line'>
                     <p>Vitalité</p>
                     <i className={ICONS.heart + " red"}></i>
-                    <p>150</p>
+                    <p>{vita}</p>
                 </div>
                 <div className='stats_line'>
                     <p>PA</p>

@@ -1,9 +1,38 @@
 .home-settingStats {
+    & .level {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.1em;
+        input {
+            margin-left: 10px;
+            text-align: center;
+            background: rgb(238, 238, 238);
+            color: $black;
+            font-weight: bold;
+            font-size: 1.3em;
+            border: none;
+        }
+
+        margin-bottom: 30px;
+    }
 
     & .elementaireCont {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
+
+        & .headerStats {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            font-size: 1.3em;
+            span {
+                font-weight: bold;
+                color: $blue1;
+                font-size: 1.2em;
+            }
+        }
 
     }
 
@@ -26,5 +55,7 @@
             margin-top: 10px;
             font-size: 1.03em;
         }
+
+
     }
 }
