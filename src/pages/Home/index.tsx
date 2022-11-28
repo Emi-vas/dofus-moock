@@ -79,7 +79,7 @@ const newChara = {
             agi: 0,
             intel: 0,
             force: 0,
-            eau: 0,
+            chance: 0,
             sagesse: 0,
         },
        

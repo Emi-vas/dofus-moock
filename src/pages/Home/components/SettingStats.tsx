@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { ICONS } from '../../../data/constants';
 import useChara from '../../../hooks/useChara';
 import { updateChara } from '../../../redux/actions/chara.action';
+import { elemToPoints, pointsToElem } from "../../../helper/homeStats"
 
 interface Props {
     setDisplaySettingsStats: (value: boolean) => void
@@ -51,7 +52,7 @@ const Settings = () => {
             <div className='level'>
                 <label htmlFor="level">Niveau : </label>
                 <input 
-                    type="number" placeholder='Niveau' 
+                    type="number" 
                     id='level' 
                     min="1"
                     max="200"
@@ -78,18 +79,22 @@ const Stats = () => {
     const chara = useChara()
     const [restPoints, setRestPoints] = useState(0)
     const [vita, setVita] = useState(chara.stats.base.vita)
+    const [force, setForce] = useState(chara.stats.base.force)
 
     useEffect(() => {
         //when you change level, check if rest points is negative
         if(restPoints < 0) {
             //reset all stats
-            storeVita(0)
             setVita(0)
+            storeVita(0)
+            setForce(0)
+            storeElem('force', 0)
             setRestPoints((chara.level - 1) * 5)
         } else {
             setRestPoints( 
                 (chara.level - 1) * 5 //points level
                 - chara.stats.base.vita
+                - elemToPoints(chara.stats.base.force)
             )
         }
     }, [chara.level, restPoints])
@@ -99,7 +104,6 @@ const Stats = () => {
     const handleVita = (vitaInput: string) => {
         if(vitaInput != "") {
             let vitaInputInt = parseInt(vitaInput)
-            //we reset all point of vita
             let realRestPoints = parseInt(restPoints + vita)
             if(vitaInputInt <= realRestPoints) {
                 setRestPoints((realRestPoints - vitaInputInt))
@@ -118,14 +122,53 @@ const Stats = () => {
             storeVita(0)
         }
     }
+
+
+    //--- Terre
+    const handleForce = (inputValue:string) => {
+        if(inputValue != "") {
+            let inputInt= parseInt(inputValue)
+            let realRestPoints = restPoints + elemToPoints(force)
+            let realCost = elemToPoints(inputInt)
+            if(realCost <= realRestPoints) {
+                setRestPoints((realRestPoints - realCost))
+                setForce(inputInt)
+                storeElem("force", inputInt)
+            } else {
+                //over rest points max
+                const res = pointsToElem(realRestPoints)
+                setRestPoints(res.rest)
+                setForce(res.stats)
+                storeElem("force", res.stats)
+            }
+        } else {
+            //empty input
+            setRestPoints(elemToPoints(force) + restPoints)
+            setForce("")
+            storeElem("force", 0)
+        }
+    }
+
+
+    //--Store
     const storeVita = (vita: number) => {
         //put on store
         let tempChara = chara
         tempChara.stats.base.vita = vita
         dispatch(updateChara(JSON.stringify(tempChara)))
     }
+    const storeElem = (elem:string, value: number) => {
+        let tempChara = chara
+        switch(elem) {
+            case "force":
+                tempChara.stats.base.force = value
+                break
+        }
 
-    //--- Terre
+        dispatch(updateChara(JSON.stringify(tempChara)))
+    }
+
+
 
     return(
         <div className='elementaireCont'>
@@ -152,7 +195,15 @@ const Stats = () => {
             <div className='elementaireBloc' style={{background: "rgb(114, 62, 6)"}}>
                 <i className={ICONS.terre}></i>
                 <label htmlFor="terre-base">Base</label>
-                <input type="number"id='terre-base' placeholder='Force' />
+                <input 
+                    type="number"id='terre-base' 
+                    placeholder='Force' 
+                    min={0}
+                    value={force}
+                    onChange={((e) => {
+                        handleForce(e.target.value)
+                    })} 
+                />
                 <label htmlFor="terre-parchemin">Parchemin</label>
                 <input type="number"id='terre-parchemin' />
             </div>
