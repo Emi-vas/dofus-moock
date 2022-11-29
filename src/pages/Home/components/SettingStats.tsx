@@ -80,6 +80,7 @@ const Stats = () => {
     const [restPoints, setRestPoints] = useState(0)
     const [vita, setVita] = useState(chara.stats.base.vita)
     const [force, setForce] = useState(chara.stats.base.force)
+    const [chance, setChance] = useState(chara.stats.base.chance)
 
     useEffect(() => {
         //when you change level, check if rest points is negative
@@ -89,12 +90,16 @@ const Stats = () => {
             storeVita(0)
             setForce(0)
             storeElem('force', 0)
+            setChance(0)
+            storeElem('chance', 0)
+            //points
             setRestPoints((chara.level - 1) * 5)
         } else {
             setRestPoints( 
                 (chara.level - 1) * 5 //points level
                 - chara.stats.base.vita
                 - elemToPoints(chara.stats.base.force)
+                - elemToPoints(chara.stats.base.chance)
             )
         }
     }, [chara.level, restPoints])
@@ -148,6 +153,30 @@ const Stats = () => {
             storeElem("force", 0)
         }
     }
+    //--- Chance
+    const handleChance= (inputValue:string) => {
+        if(inputValue != "") {
+            let inputInt= parseInt(inputValue)
+            let realRestPoints = restPoints + elemToPoints(chance)
+            let realCost = elemToPoints(inputInt)
+            if(realCost <= realRestPoints) {
+                setRestPoints((realRestPoints - realCost))
+                setChance(inputInt)
+                storeElem("chance", inputInt)
+            } else {
+                //over rest points max
+                const res = pointsToElem(realRestPoints)
+                setRestPoints(res.rest)
+                setChance(res.stats)
+                storeElem("chance", res.stats)
+            }
+        } else {
+            //empty input
+            setRestPoints(elemToPoints(chance) + restPoints)
+            setChance("")
+            storeElem("chance", 0)
+        }
+    }
 
 
     //--Store
@@ -162,6 +191,9 @@ const Stats = () => {
         switch(elem) {
             case "force":
                 tempChara.stats.base.force = value
+                break
+            case "chance":
+                tempChara.stats.base.chance = value
                 break
         }
 
@@ -210,7 +242,15 @@ const Stats = () => {
             <div className='elementaireBloc' style={{background: "rgb(12, 120, 188)"}}>
                 <i className={ICONS.eau}></i>
                 <label htmlFor="eau-base">Base</label>
-                <input type="number"id='eau-base' placeholder='Chance' />
+                <input 
+                    type="number"id='eau-base' 
+                    placeholder='Chance' 
+                    min={0}
+                    value={chance}
+                    onChange={((e) => {
+                        handleChance(e.target.value)
+                    })} 
+                />
                 <label htmlFor="eau-parchemin">Parchemin</label>
                 <input type="number"id='eau-parchemin' />
             </div>
